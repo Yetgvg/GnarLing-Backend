@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, JoinColumn } from 'typeorm';
-import { Idiomas } from './Idioma';
+import { Idiomas } from './Idiomas';
 
 @Entity()
 export class Licoes extends BaseEntity {

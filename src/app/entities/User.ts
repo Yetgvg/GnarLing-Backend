@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, Unique, ManyToOne, JoinColumn } from "typeorm";
-import { Idiomas } from "./Idioma";
+import { Idiomas } from "./Idiomas";
 
 @Entity('users')
 @Unique(["email"])
@@ -22,7 +22,7 @@ export class Users {
 
     @ManyToOne(() => Idiomas)
     @JoinColumn({ name: "idioma_aprendendo_id" })
-    idioma_aprendendo?: Idiomas;
+    idioma_aprendendo_id?: Idiomas;
 
     @Column({ type: 'json', nullable: true })
     progresso?: any;

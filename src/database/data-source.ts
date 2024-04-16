@@ -7,7 +7,7 @@ import { CreatePalavrasTable1712877705695 } from "./migrations/1712877705695-Cre
 
 import { Users } from "../app/entities/User"
 import { Palavras } from "../app/entities/Palavras"
-import { Idiomas } from "../app/entities/Idioma"
+import { Idiomas } from "../app/entities/Idiomas"
 import { Licoes } from "../app/entities/Licao"
 
 const entities = [

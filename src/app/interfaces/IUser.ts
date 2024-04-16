@@ -1,12 +1,12 @@
-import { Idioma } from "../entities/Idioma";
+import { Idiomas } from "../entities/Idiomas";
 
 interface IUser {
   id?: number;
   nome: string;
   email: string;
   senha: string;
-  idioma_nativo_id: Idioma;
-  idioma_aprendendo_id?: Idioma;
+  idioma_nativo_id: Idiomas;
+  idioma_aprendendo_id?: Idiomas;
   progresso?: any;
 }
 
