@@ -46,6 +46,7 @@ userRouter.post('/login', async (req: Request, res: Response): Promise<Response>
 
         // Buscar usuário pelo email
         const user = await UserRepository.getUserByEmail(email);
+        console.log(user)
 
         if (!user) {
             return res.status(401).json({ message: "Credenciais inválidas" });
@@ -59,7 +60,9 @@ userRouter.post('/login', async (req: Request, res: Response): Promise<Response>
         }
 
         // Gerar token de autenticação
-        const token = jwt.sign({ id: user.id, email: user.email }, 'segredo', { expiresIn: '1h' });
+        // const token = jwt.sign({ id: user.id, email: user.email, nome: user.nome }, 'segredo', { expiresIn: '1h' });
+
+        const token = { id: user.id, email: user.email, nome: user.nome, Teste: user.idioma_aprendendo_id };
 
         return res.status(200).json({ token });
     } catch (error) {
