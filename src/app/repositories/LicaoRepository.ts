@@ -32,6 +32,13 @@ class LicaoRepository {
     const result = await licaoRepository.delete(id);
     return !!result.affected;
   }
+
+  async getLicoesByLanguageId(idioma_id: number): Promise<Licoes[]> {
+    return await licaoRepository.createQueryBuilder("licao")
+      .innerJoin("licao.idioma", "idioma")
+      .where("idioma.id = :idioma_id", { idioma_id })
+      .getMany();
+  }
 }
 
 export default new LicaoRepository();

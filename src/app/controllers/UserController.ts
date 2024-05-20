@@ -62,12 +62,46 @@ userRouter.post('/login', async (req: Request, res: Response): Promise<Response>
         // Gerar token de autenticação
         // const token = jwt.sign({ id: user.id, email: user.email, nome: user.nome }, 'segredo', { expiresIn: '1h' });
 
-        const token = { id: user.id, email: user.email, nome: user.nome, Teste: user.idioma_aprendendo_id };
+        const token = { id: user.id, email: user.email, nome: user.nome, Idioma: user.idioma_aprendendo_id };
 
         return res.status(200).json({ token });
     } catch (error) {
         console.error("Erro ao fazer login:", error);
         return res.status(500).json({ message: "Erro ao fazer login" });
+    }
+});
+
+userRouter.put('/:userId/progress/:lessonId', async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const userId = parseInt(req.params.userId);
+        const lessonId = parseInt(req.params.lessonId);
+
+        const updated = await UserRepository.updateUserProgress(userId, lessonId);
+
+        if (updated) {
+            return res.status(200).json({ message: "Progresso do usuário atualizado com sucesso!" });
+        } else {
+            return res.status(404).json({ message: "Usuário não encontrado ou lição não encontrada no progresso do usuário" });
+        }
+    } catch (error) {
+        console.error("Erro ao atualizar o progresso do usuário:", error);
+        return res.status(500).json({ message: "Erro ao atualizar o progresso do usuário" });
+    }
+});
+
+userRouter.get('/email/:email', async (req: Request, res: Response) => {
+    try {
+        const email = req.params.email;
+        const user = await UserRepository.getUserByEmail(email);
+        
+        if (user) {
+            return res.status(200).json(user);
+        } else {
+            return res.status(404).json({ message: "Usuário não encontrado" });
+        }
+    } catch (error) {
+        console.error("Erro ao buscar usuário por e-mail:", error);
+        return res.status(500).json({ message: "Erro ao buscar usuário por e-mail" });
     }
 });
 

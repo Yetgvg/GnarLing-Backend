@@ -15,4 +15,16 @@ licaoRouter.get('/', async (req: Request, res: Response): Promise<Response> => {
     }
 });
 
+// Rota para listar as lições de um idioma específico
+licaoRouter.get('/idioma/:idioma_id', async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const { idioma_id } = req.params;
+        const licoes = await LicaoRepository.getLicoesByLanguageId(parseInt(idioma_id));
+        return res.status(200).json(licoes);
+    } catch (error) {
+        console.error("Erro ao obter lições por idioma:", error);
+        return res.status(500).json({ message: "Erro ao obter lições por idioma" });
+    }
+});
+
 export default licaoRouter;
