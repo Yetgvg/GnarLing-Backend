@@ -14,7 +14,7 @@ app.use(routers);
 
 AppDataSource.initialize().then(async () => {
     console.log("Data Source has been initialized!");
-    app.listen(3333, () => {
+    app.listen(3333,'0.0.0.0', () => {
         console.log("Server is running! Port:3333");
     })
 })
