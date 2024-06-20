@@ -51,10 +51,38 @@ export class CreateLicoesTable1618974202387 implements MigrationInterface {
             { questao: "___ is full of surprises.", resposta: "life" }
         ];
 
-
         await Promise.all(licoesPalavras.map(async (licao) => {
             await queryRunner.query(
                 `INSERT INTO licoes (idioma_id, questao, tipo, resposta) VALUES (2, "${licao.questao}", 1, "${licao.resposta}")`
+            );
+        }));
+
+        const licoesFrases2 = [
+            { questao: "I am learning English.", resposta: "eu estou aprendendo inglês" },
+            { questao: "She is reading a book.", resposta: "ela está lendo um livro" },
+            { questao: "We are playing soccer.", resposta: "nós estamos jogando futebol" },
+            { questao: "They are cooking dinner.", resposta: "eles estão preparando o jantar" },
+            { questao: "He is watching TV.", resposta: "ele está assistindo TV" },
+            { questao: "I am writing a letter.", resposta: "eu estou escrevendo uma carta" },
+            { questao: "She is driving a car.", resposta: "ela está dirigindo um carro" },
+            { questao: "We are listening to music.", resposta: "nós estamos ouvindo música" },
+            { questao: "They are studying hard.", resposta: "eles estão estudando muito" },
+            { questao: "He is swimming in the pool.", resposta: "ele está nadando na piscina" },
+            { questao: "I am painting a picture.", resposta: "eu estou pintando um quadro" },
+            { questao: "She is planting flowers.", resposta: "ela está plantando flores" },
+            { questao: "We are building a house.", resposta: "nós estamos construindo uma casa" },
+            { questao: "They are singing a song.", resposta: "eles estão cantando uma música" },
+            { questao: "He is fixing the car.", resposta: "ele está consertando o carro" },
+            { questao: "I am making a cake.", resposta: "eu estou fazendo um bolo" },
+            { questao: "She is cleaning the room.", resposta: "ela está limpando o quarto" },
+            { questao: "We are visiting our friends.", resposta: "nós estamos visitando nossos amigos" },
+            { questao: "They are playing chess.", resposta: "eles estão jogando xadrez" },
+            { questao: "He is fishing in the river.", resposta: "ele está pescando no rio" },
+        ];
+
+        await Promise.all(licoesFrases2.map(async (licao) => {
+            await queryRunner.query(
+                `INSERT INTO licoes (idioma_id, questao, tipo, resposta) VALUES (2, "${licao.questao}", 2, "${licao.resposta}")`
             );
         }));
     }
